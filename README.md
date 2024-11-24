@@ -1,0 +1,1 @@
+Have you ever had a computer at school, from the government, or from some other source? Well, there were times when some pages were blocked by an extension or by the operating system itself with a built-in blocker. Well, that's where Sa1xp comes in—a Google simulator with a proxy mask so it’s not detected as a browser, capable of opening pages that are blocked. Enjoy!! :D
