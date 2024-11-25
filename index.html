@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruta a archivo externo (Securly)</title>
+    <title>Botón que abre about:blank con contenido HTML</title>
     <style>
         body, html {
             height: 100%;
@@ -36,9 +36,18 @@
         function openAboutBlank() {
             // Abrir una nueva ventana about:blank
             var newWindow = window.open('about:blank', '_blank');
-
-            // Cargar el archivo HTML externo en la nueva ventana
-            newWindow.document.location = 'unblocker.html';  // Ruta al archivo HTML
+            
+            // Leer el contenido del archivo externo (contenido.html) usando Fetch API
+            fetch('unblocker.html')
+                .then(response => response.text())
+                .then(data => {
+                    // Escribir el contenido del archivo HTML dentro de la ventana about:blank
+                    newWindow.document.write(data);
+                    newWindow.document.close();  // Importante para terminar la escritura y mostrar el contenido
+                })
+                .catch(error => {
+                    console.error('Error al cargar el archivo HTML:', error);
+                });
         }
     </script>
 
