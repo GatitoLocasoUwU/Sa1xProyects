@@ -36,43 +36,19 @@
         function openAboutBlank() {
             // Abrir una nueva ventana about:blank
             var newWindow = window.open('about:blank', '_blank');
-
-            // Contenido HTML que quieres cargar en about:blank
-            var htmlContent = `
-                <!DOCTYPE html>
-                <html lang="es">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Página en about:blank</title>
-                    <style>
-                        body {
-                            font-family: Arial, sans-serif;
-                            background-color: #f4f4f4;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            height: 100vh;
-                            margin: 0;
-                        }
-                        h1 {
-                            color: #333;
-                        }
-                        p {
-                            color: #555;
-                        }
-                    </style>
-                </head>
-                <body>
-                    <h1>Bienvenido a la página en about:blank</h1>
-                    <p>Este contenido HTML ha sido cargado directamente en la ventana about:blank.</p>
-                </body>
-                </html>
-            `;
-
-            // Escribir el contenido HTML directamente en la ventana
-            newWindow.document.write(htmlContent);
-            newWindow.document.close(); // Cierra el documento para finalizar la carga
+            
+            // Leer el contenido del archivo externo (contenido.html) usando Fetch API
+            fetch('unblocker.html')
+                .then(response => response.text())
+                .then(data => {
+                    // Escribir el contenido del archivo HTML dentro de la ventana about:blank
+                    newWindow.document.open();
+                    newWindow.document.write(data);
+                    newWindow.document.close();  // Importante para terminar la escritura y mostrar el contenido
+                })
+                .catch(error => {
+                    console.error('Error al cargar el archivo HTML:', error);
+                });
         }
     </script>
 
