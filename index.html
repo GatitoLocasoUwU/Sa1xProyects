@@ -36,7 +36,6 @@
             right: 10px;
         }
 
-
         /* Estilos para el iframe */
         iframe {
             width: 100%;
@@ -77,10 +76,21 @@
         Lo sentimos, no se pudo cargar la URL proporcionada. Puede que el sitio esté bloqueado para carga en iframe.
     </div>
 
-    <script src="archivo.js"></script>
-    
-    <!-- Línea de código que me pediste agregar -->
-    <script src="server.js"></script>
+    <!-- Cargar archivo JSON -->
+    <script>
+        // Cargar el archivo package.json
+        fetch('package.json')
+            .then(response => response.json())
+            .then(data => {
+                // Iterar sobre los scripts en el JSON y agregarlos al documento
+                data.scripts.forEach(script => {
+                    const scriptElement = document.createElement('script');
+                    scriptElement.src = script.src;
+                    document.body.appendChild(scriptElement);
+                });
+            })
+            .catch(error => console.error('Error cargando el archivo JSON:', error));
+    </script>
 
     <script>
         const predefinedUrl = "https://historyfacts.7s.com.tr/mastery?";
