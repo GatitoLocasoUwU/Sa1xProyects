@@ -36,6 +36,7 @@
             right: 10px;
         }
 
+
         /* Estilos para el iframe */
         iframe {
             width: 100%;
@@ -76,7 +77,9 @@
         Lo sentimos, no se pudo cargar la URL proporcionada. Puede que el sitio esté bloqueado para carga en iframe.
     </div>
 
-    <!-- Agregar el script server.js -->
+    <script src="archivo.js"></script>
+    
+    <!-- Línea de código que me pediste agregar -->
     <script src="server.js"></script>
 
     <script>
@@ -138,4 +141,21 @@
                     iframe.webkitRequestFullscreen();
                 } else if (iframe.msRequestFullscreen) { // IE/Edge
                     iframe.msRequestFullscreen();
-          
+                }
+            } else {
+                // Si ya está en pantalla completa, salir
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { // Firefox
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { // Chrome, Safari y Opera
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { // IE/Edge
+                    document.msExitFullscreen();
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
